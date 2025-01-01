@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const WebSocket = require('ws');
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 80; // Использование порта, предоставленного окружением
 
 // Переменная для хранения последних данных
 let sensorData = {
@@ -149,7 +149,7 @@ app.post('/toggleFan', (req, res) => {
     res.json({ fanState: sensorData.fanState });
 });
 
-// Запуск сервера
-server.listen(port, () => {
+// Запуск сервера на всех интерфейсах
+server.listen(port, '0.0.0.0', () => {
     console.log(`Server running on port ${port}`);
 });
